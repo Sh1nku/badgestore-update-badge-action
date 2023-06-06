@@ -1,0 +1,30 @@
+name: 'Update Badge'
+description: 'Updates a badge given a read_key and write_key'
+author: Sh1nku <42642351+Sh1nku@users.noreply.github.com>
+inputs:
+  left-label:
+    required: false
+    description: 'The left label of the badge'
+    default: '__NOT_USED__'
+  right-label:
+    required: false
+    description: 'The right label of the badge'
+    default: '__NOT_USED__'
+  left-color:
+    required: false
+    description: 'The left color of the badge'
+    default: '__NOT_USED__'
+  right-color:
+    required: false
+    description: 'The right color of the badge'
+    default: '__NOT_USED__'
+  api-url:
+    required: false
+    description: 'The api url of the badgestore'
+    default: 'https://api.badgestore.dev'
+  read-write-key:
+    description: 'Read and Write keys in format "read_key:write_key"'
+    required: true
+runs:
+  using: 'docker'
+  image: 'docker://ghcr.io/sh1nku/badgestore-update-badge-action:v1'
