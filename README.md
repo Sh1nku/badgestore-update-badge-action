@@ -45,11 +45,17 @@ jobs:
   steps:
     - uses: actions/checkout@v3
     - id: loc
+      name: Count lines of code
       uses: Sh1nku/count-loc-action@v1
       with:
         excluded: "*.json,*.yaml"
-    - uses: Sh1nku/badgestore-update-badge-action@v1
+    - uses: ./
+      name: Update badge
+      id: badge
       with:
         right-label: ${{ steps.loc.outputs.Total_code }}
         read-write-key: ${{ secrets.ACTION_RW_KEY }}
+    - name: Verify content changed
+      if: steps.badge.outputs.right_label != steps.loc.outputs.Total_code
+      run: echo "The output of the badge was not equal to the input" && exit 1
 ```
