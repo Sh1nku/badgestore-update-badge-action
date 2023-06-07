@@ -25,3 +25,4 @@ jobs:
       - name: Verify content changed
         if: steps.badge.outputs.right-label != steps.loc.outputs.Total_code
         run: echo "The output of the badge was not equal to the input ${{ steps.badge.outputs.right-label}} - ${{ steps.loc.outputs.Total_code}}" && exit 1
+      - uses: koki-develop/hub-purge-action@v1
